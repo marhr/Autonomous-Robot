@@ -21,7 +21,7 @@ const double FIELD_H = 914.4;
 const double BUFFER = 30.0;
 
 // Max iterations for random sampling
-const int MAX_SAMPLES = 1000;
+const int MAX_SAMPLES = 5000;
 
 // Targets (index 0 = start)
 // const int x_targets[] = {1450, 200, 200, 650};
@@ -34,7 +34,7 @@ const int NUM_TARGETS = 5;
 struct Point { double x, y; };
 struct Polygon { std::vector<Point> verts; };
 
-// Define your 5 obstacles here
+// Obstacles 
 Polygon obstacles[] = {
     // Obstacle A: 254x254, bottom-left at (300, 0)
     { {{300,0},{554,0},{554,254},{300,254}} },
@@ -76,6 +76,7 @@ bool pointInPolygon(const Point& p, const Polygon& poly, double buffer) {
     return true;
 }
 
+// Check if point is in obtacle
 // specific for axis-aligned obstacles
 bool pointInObstacle(const Point& p) {
     for (int o = 0; o < NUM_OBSTACLES; o++) {
